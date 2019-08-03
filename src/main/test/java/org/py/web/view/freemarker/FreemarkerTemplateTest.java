@@ -36,4 +36,15 @@ public class FreemarkerTemplateTest {
         Writer out = new OutputStreamWriter(System.out);
         template.process(root, out);
     }
+    @Test
+    public void process() throws IOException, TemplateException {
+        FreemarkerTemplate freemarkerTemplate = new FreemarkerTemplate(cfg);
+        Map<String, Object> root = new HashMap<>();
+        root.put("user", "BigJoe");
+        Map<String, Object> latest = new HashMap<>();
+        root.put("latestProduct", latest);
+        latest.put("url", "products/greenmouse");
+        latest.put("name", "green mouse");
+        freemarkerTemplate.process("index.html", new OutputStreamWriter(System.out), root);
+    }
 }

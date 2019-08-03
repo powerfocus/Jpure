@@ -8,12 +8,11 @@ import java.io.IOException;
 import java.io.Writer;
 
 public final class FreemarkerTemplate {
-    private final static Configuration cfg;
-    private FreemarkerTemplate() { }
-    static {
-        cfg = new Configuration(Configuration.VERSION_2_3_28);
+    private Configuration cfg;
+    public FreemarkerTemplate(Configuration cfg) {
+        this.cfg = cfg;
     }
-    public static synchronized void process(final String templateName, final Writer out, Object model) throws IOException, TemplateException {
+    public synchronized void process(final String templateName, final Writer out, Object model) throws IOException, TemplateException {
         Template template = cfg.getTemplate(templateName);
         template.process(model, out);
     }
