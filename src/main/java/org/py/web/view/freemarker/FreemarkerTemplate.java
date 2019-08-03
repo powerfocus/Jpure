@@ -12,7 +12,7 @@ public final class FreemarkerTemplate {
     public FreemarkerTemplate(Configuration cfg) {
         this.cfg = cfg;
     }
-    public synchronized void process(final String templateName, final Writer out, Object model) throws IOException, TemplateException {
+    public void process(final String templateName, final Writer out, Object model) throws IOException, TemplateException {
         Template template = cfg.getTemplate(templateName);
         template.process(model, out);
     }
