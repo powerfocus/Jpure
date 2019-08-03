@@ -1,1 +1,1 @@
-一个纯粹java web的站点
+一个纯粹的java web
