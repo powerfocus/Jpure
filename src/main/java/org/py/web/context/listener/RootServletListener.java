@@ -20,16 +20,14 @@ public class RootServletListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
-        /*FilterRegistration.Dynamic encodingFilter = context.addFilter("characterEncodingFilter", CharacterEncodingFilter.class);
-        encodingFilter.addMappingForUrlPatterns(null, false, "/*");*/
         filterRegister.setCtx(context);
         filterRegister.add("characterEncodingFilter", CharacterEncodingFilter.class, "/*");
         filterRegister.register();
-        log.info(getClass().getName() + " initialized.");
+        log.info(getClass().getName() + " initialized. web starting up...");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        log.info(getClass().getName() + " destroyed.");
+        log.info(getClass().getName() + " destroyed. web site closed.");
     }
 }

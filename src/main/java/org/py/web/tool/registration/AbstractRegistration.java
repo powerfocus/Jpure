@@ -1,15 +1,14 @@
 package org.py.web.tool.registration;
 
-import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 
-public class AbstractRegistration implements Registration {
-    private ServletContext ctx;
-    private ConcurrentMap<String, ConcurrentMap<String, Class<?>>> filters;
+public abstract class AbstractRegistration implements Registration {
+    protected ServletContext ctx;
+    protected ConcurrentMap<String, ConcurrentMap<String, Class<?>>> filters;
     public AbstractRegistration() {
         filters = new ConcurrentHashMap<>();
     }
@@ -34,23 +33,8 @@ public class AbstractRegistration implements Registration {
     }
 
     @Override
-    public void register() {
-        AtomicReference<String> av = new AtomicReference<>();
-        filters.forEach((url, map) -> {
-            av.set(url);
-            map.forEach((name, clazz) -> {
-                ctx.addFilter(name, (Class<? extends Filter>) clazz).addMappingForUrlPatterns(null, false, av.get());
-            });
-        });
-        /*for (Map.Entry<String, ConcurrentMap<String, Class<?>>> e : filters.entrySet()) {
-            String url = e.getKey();
-            ConcurrentMap<String, Class<?>> map = e.getValue();
-            for (Map.Entry<String, Class<?>> entry : map.entrySet()) {
-                String name = entry.getKey();
-                Class<?> clazz = entry.getValue();
-                ctx.addFilter(name, (Class<? extends Filter>) clazz).addMappingForUrlPatterns(null, false, url);
-            }
-        }*/
+    public void register(Consumer consumer) {
+        consumer.accept(ctx);
     }
 
     public ServletContext getCtx() {
