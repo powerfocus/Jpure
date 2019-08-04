@@ -12,7 +12,7 @@ public class FilterRegister extends AbstractRegistration {
     @Override
     public void register() {
         AtomicReference<String> av = new AtomicReference<>();
-        filters.forEach((url, map) -> {
+        elements.forEach((url, map) -> {
             av.set(url);
             map.forEach((name, clazz) -> {
                 ctx.addFilter(name, clazz).addMappingForUrlPatterns(null, false, av.get());

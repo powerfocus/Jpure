@@ -1,5 +1,6 @@
 package org.py.web.context.listener;
 
+import org.py.web.context.WebRootResolver;
 import org.py.web.context.filter.CharacterEncodingFilter;
 import org.py.web.tool.registration.FilterRegister;
 import org.py.web.tool.registration.ServletRegister;
@@ -14,18 +15,15 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class RootServletListener implements ServletContextListener {
     private static final Logger log = LoggerFactory.getLogger(RootServletListener.class);
-    private static final FilterRegister filterRegister;
-    private static final ServletRegister servletRegister;
+    private static final WebRootResolver webRootResolver;
     static {
-        filterRegister = new FilterRegister();
-        servletRegister = new ServletRegister();
+        webRootResolver = new WebRootResolver();
     }
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        ServletContext context = sce.getServletContext();
-        filterRegister.setCtx(context);
-        filterRegister.add("characterEncodingFilter", CharacterEncodingFilter.class, "/*");
-        filterRegister.register();
+        webRootResolver.servletContext(sce.getServletContext());
+        webRootResolver.addFilter("characterEncodingFilter", CharacterEncodingFilter.class, "/*");
+        webRootResolver.register();
         log.info(getClass().getName() + " initialized. web starting up...");
     }
 

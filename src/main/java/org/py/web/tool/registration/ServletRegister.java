@@ -14,7 +14,7 @@ public class ServletRegister extends AbstractRegistration {
     @Override
     public void register() {
         AtomicReference<String> av = new AtomicReference<>();
-        filters.forEach((url, map) -> {
+        elements.forEach((url, map) -> {
             av.set(url);
             map.forEach((name, clazz) -> {
                 ctx.addServlet(name, clazz).addMapping(av.get());
