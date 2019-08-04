@@ -1,5 +1,6 @@
 package org.py.web.tool.registration;
 
+import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
@@ -8,7 +9,7 @@ import java.util.function.Consumer;
 
 public abstract class AbstractRegistration implements Registration {
     protected ServletContext ctx;
-    protected ConcurrentMap<String, ConcurrentMap<String, Class<?>>> filters;
+    protected ConcurrentMap<String, ConcurrentMap<String, Class>> filters;
     public AbstractRegistration() {
         filters = new ConcurrentHashMap<>();
     }
@@ -17,8 +18,8 @@ public abstract class AbstractRegistration implements Registration {
         this.ctx = Objects.requireNonNull(ctx, "context object require not null.");
     }
     @Override
-    public void add(String name, Class<?> clazz, String mapping) {
-        filters.put(mapping, new ConcurrentHashMap<String, Class<?>>() {{put(name, clazz);}});
+    public void add(String name, Class clazz, String mapping) {
+        filters.put(mapping, new ConcurrentHashMap<String, Class>() {{put(name, clazz);}});
     }
 
     @Override
@@ -45,11 +46,11 @@ public abstract class AbstractRegistration implements Registration {
         this.ctx = ctx;
     }
 
-    public ConcurrentMap<String, ConcurrentMap<String, Class<?>>> getFilters() {
+    public ConcurrentMap<String, ConcurrentMap<String, Class>> getFilters() {
         return filters;
     }
 
-    public void setFilters(ConcurrentMap<String, ConcurrentMap<String, Class<?>>> filters) {
+    public void setFilters(ConcurrentMap<String, ConcurrentMap<String, Class>> filters) {
         this.filters = filters;
     }
 }

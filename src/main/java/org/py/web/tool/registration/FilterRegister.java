@@ -1,6 +1,5 @@
 package org.py.web.tool.registration;
 
-import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -16,7 +15,7 @@ public class FilterRegister extends AbstractRegistration {
         filters.forEach((url, map) -> {
             av.set(url);
             map.forEach((name, clazz) -> {
-                ctx.addFilter(name, (Class<? extends Filter>) clazz).addMappingForUrlPatterns(null, false, av.get());
+                ctx.addFilter(name, clazz).addMappingForUrlPatterns(null, false, av.get());
             });
         });
     }
