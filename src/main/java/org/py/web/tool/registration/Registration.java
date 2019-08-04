@@ -1,5 +1,6 @@
 package org.py.web.tool.registration;
 
+import javax.servlet.ServletContext;
 import java.util.function.Consumer;
 
 public interface Registration {
@@ -7,5 +8,5 @@ public interface Registration {
     void remove(String name);
     boolean exists(String name);
     void register();
-    void register(Consumer consumer);
+    void register(Consumer<ServletContext> consumer);
 }

@@ -1,10 +1,10 @@
 package org.py.web.tool.registration;
 
-import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
 public abstract class AbstractRegistration implements Registration {
@@ -34,7 +34,12 @@ public abstract class AbstractRegistration implements Registration {
     }
 
     @Override
-    public void register(Consumer consumer) {
+    public void register() {
+
+    }
+
+    @Override
+    public void register(Consumer<ServletContext> consumer) {
         consumer.accept(ctx);
     }
 
