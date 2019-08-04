@@ -1,13 +1,10 @@
-package org.py.web.context.listener;
+package org.py.jpure.context.listener;
 
-import org.py.web.context.WebRootResolver;
-import org.py.web.context.filter.CharacterEncodingFilter;
-import org.py.web.tool.registration.FilterRegister;
-import org.py.web.tool.registration.ServletRegister;
+import org.py.jpure.context.WebRootResolver;
+import org.py.jpure.context.filter.CharacterEncodingFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;

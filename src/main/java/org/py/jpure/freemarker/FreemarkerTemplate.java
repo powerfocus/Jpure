@@ -1,4 +1,4 @@
-package org.py.web.view.freemarker;
+package org.py.jpure.freemarker;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

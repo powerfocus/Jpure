@@ -1,7 +1,7 @@
-package org.py.web.context;
+package org.py.jpure.context;
 
-import org.py.web.tool.registration.FilterRegister;
-import org.py.web.tool.registration.ServletRegister;
+import org.py.jpure.registration.FilterRegister;
+import org.py.jpure.registration.ServletRegister;
 
 import javax.servlet.ServletContext;
 import java.util.Objects;

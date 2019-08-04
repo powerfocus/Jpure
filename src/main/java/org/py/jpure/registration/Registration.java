@@ -1,4 +1,4 @@
-package org.py.web.tool.registration;
+package org.py.jpure.registration;
 
 import javax.servlet.ServletContext;
 import java.util.function.Consumer;

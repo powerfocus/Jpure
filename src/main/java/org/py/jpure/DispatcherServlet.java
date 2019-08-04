@@ -1,4 +1,4 @@
-package org.py.web;
+package org.py.jpure;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
