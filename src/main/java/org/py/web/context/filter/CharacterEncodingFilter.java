@@ -1,4 +1,4 @@
-package org.py.web.filter;
+package org.py.web.context.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,12 +20,10 @@ public class CharacterEncodingFilter implements Filter {
         servletRequest.setCharacterEncoding("utf-8");
         servletResponse.setCharacterEncoding("utf-8");
         filterChain.doFilter(servletRequest, servletResponse);
-        log.info(getClass().getName() + " filter character encoding.");
     }
 
     @Override
     public void destroy() {
-        log.info(CharacterEncodingFilter.class.getName() + " destroy.");
         config = null;
     }
 }
