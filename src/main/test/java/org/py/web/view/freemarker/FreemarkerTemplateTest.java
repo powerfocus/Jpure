@@ -1,17 +1,15 @@
 package org.py.web.view.freemarker;
 
 import freemarker.template.Configuration;
-import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import org.junit.Before;
 import org.junit.Test;
-import sun.net.util.IPAddressUtil;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,18 +24,6 @@ public class FreemarkerTemplateTest {
     }
     @Test
     public void test() throws IOException, TemplateException {
-        Map<String, Object> root = new HashMap<>();
-        root.put("user", "BigJoe");
-        Map<String, Object> latest = new HashMap<>();
-        root.put("latestProduct", latest);
-        latest.put("url", "products/greenmouse");
-        latest.put("name", "green mouse");
-        Template template = cfg.getTemplate("index.html");
-        Writer out = new OutputStreamWriter(System.out);
-        template.process(root, out);
-    }
-    @Test
-    public void process() throws IOException, TemplateException {
         FreemarkerTemplate freemarkerTemplate = new FreemarkerTemplate(cfg);
         Map<String, Object> root = new HashMap<>();
         root.put("user", "BigJoe");
@@ -46,5 +32,18 @@ public class FreemarkerTemplateTest {
         latest.put("url", "products/greenmouse");
         latest.put("name", "green mouse");
         freemarkerTemplate.process("index.html", new OutputStreamWriter(System.out), root);
+    }
+    @Test
+    public void test2() throws IOException, TemplateException {
+        FreemarkerTemplate template = new FreemarkerTemplate(cfg);
+        StringWriter writer = new StringWriter();
+        template.process("index.html", writer, map -> {
+            map.put("user", "BigJoe");
+            Map<String, Object> latest = new HashMap<>();
+            map.put("latestProduct", latest);
+            latest.put("url", "products/greenmouse");
+            latest.put("name", "green mouse");
+        });
+        System.out.println(writer);
     }
 }
