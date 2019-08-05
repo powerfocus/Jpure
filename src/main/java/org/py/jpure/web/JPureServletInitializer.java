@@ -1,6 +1,6 @@
 package org.py.jpure.web;
 
-import org.py.jpure.DispatcherServlet;
+import org.py.jpure.context.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletContext;
