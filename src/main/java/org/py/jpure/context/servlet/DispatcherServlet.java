@@ -17,40 +17,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DispatcherServlet extends HttpServlet {
+public class DispatcherServlet extends ResolverServlet {
     private static final Logger log = LoggerFactory.getLogger(DispatcherServlet.class);
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        service(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        service(req, resp);
-    }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try(InputStream ins = getClass().getClassLoader().getResourceAsStream("templates/index/index.html");
-            InputStreamReader reader = new InputStreamReader(ins, StandardCharsets.UTF_8);
-            PrintWriter out = resp.getWriter()) {
-            CharBuffer buffer = CharBuffer.allocate(128);
-            List<String> lines = new ArrayList<>();
-            while(reader.read(buffer) != -1) {
-                buffer.flip();
-                lines.add(buffer.toString());
-            }
-            String html = lines.stream().reduce("", String::concat);
-            out.print(html);
-        } catch(IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 }
