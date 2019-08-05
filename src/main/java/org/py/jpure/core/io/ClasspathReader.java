@@ -1,7 +1,6 @@
 package org.py.jpure.core.io;
 
 import java.io.*;
-import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 
 public class ClasspathReader extends ResourceReader {
@@ -24,9 +23,16 @@ public class ClasspathReader extends ResourceReader {
 
     @Override
     public byte[] readBytes() throws IOException {
-        try(InputStream inputStream = resource.getInputStream(); BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream)) {
-            
+        byte[] re = null;
+        try(InputStream inputStream = resource.getInputStream();
+            ByteArrayOutputStream bout = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[128];
+            int rlen = 0;
+            while((rlen = inputStream.read(buffer)) != -1) {
+                bout.write(buffer, 0, rlen);
+            }
+            re = bout.toByteArray();
         }
-        return super.readBytes();
+        return re;
     }
 }
