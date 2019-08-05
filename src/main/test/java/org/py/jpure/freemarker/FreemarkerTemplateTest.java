@@ -42,7 +42,7 @@ public class FreemarkerTemplateTest {
     public void test2() throws IOException, TemplateException {
         FreemarkerTemplate template = new FreemarkerTemplate(cfg, ".html");
         StringWriter writer = new StringWriter();
-        template.process("index.html", writer, map -> {
+        template.process("index/index", writer, map -> {
             map.put("user", "BigJoe");
             Map<String, Object> latest = new HashMap<>();
             map.put("latestProduct", latest);
