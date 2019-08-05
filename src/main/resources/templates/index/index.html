@@ -2,17 +2,11 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>站点首页</title>
+    <title>Welcome!</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10">
-                <h1>first page.这是站点首页模版</h1>
-                <p>for bootstrap4</p>
-                <p>2019-8-3</p>
-            </div>
-        </div>
-    </div>
+    <h1>Welcome ${user}</h1>
+    <p>Our latest product: </p>
+    <a href="${latestProduct.url}">${latestProduct.name}</a>
 </body>
 </html>

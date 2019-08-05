@@ -8,21 +8,28 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public final class FreemarkerTemplate {
     private Configuration cfg;
-    public FreemarkerTemplate(Configuration cfg) {
+    private String extname;
+    public FreemarkerTemplate(final Configuration cfg, final String extname) {
         this.cfg = cfg;
+        this.extname = extname;
+    }
+    public Template process(final String templateName) throws IOException {
+        Objects.requireNonNull(templateName, "template name not null.");
+        return cfg.getTemplate(templateName.concat(extname));
     }
     public void process(final String templateName, final Writer out, Object model) throws IOException, TemplateException {
-        Template template = cfg.getTemplate(templateName);
+        Template template = process(templateName);
         template.process(model, out);
     }
     public void process(final String templateName, final Writer out, Consumer<Map<String, Object>> consumer) throws IOException, TemplateException {
-        Template template = cfg.getTemplate(templateName);
-        Map<String, Object> map = new HashMap<>();
-        consumer.accept(map);
-        template.process(map, out);
+        Template template = process(templateName);
+        Map<String, Object> data = new HashMap<>();
+        consumer.accept(data);
+        template.process(data, out);
     }
 }
