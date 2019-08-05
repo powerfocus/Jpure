@@ -26,7 +26,7 @@ public class ClasspathResourceTest {
         }
     }
     @Test
-    public void test2() {
+    public void test2() throws IOException {
         ClasspathResource resource = new ClasspathResource("templates/index/index.html");
         ClasspathReader reader = new ClasspathReader(resource);
         System.out.println(reader.readCharacter());
