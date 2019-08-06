@@ -20,7 +20,9 @@ public class ReflectTest {
         Class<?> aClass = ReflectUtils.forName("org.py.arena.controller.IndexController");
         Object obj = ReflectUtils.newInstance(aClass);
         Method index = ReflectUtils.getMethod(aClass, "index", ModelMap.class);
-        Object invoke = ReflectUtils.invoke(obj, index, new ModelMap());
+        ModelMap map = new ModelMap();
+        Object invoke = ReflectUtils.invoke(obj, index, map);
         System.out.println(invoke);
+        System.out.println(map);
     }
 }
