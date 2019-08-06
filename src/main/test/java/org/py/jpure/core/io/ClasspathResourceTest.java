@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.nio.CharBuffer;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class ClasspathResourceTest {
@@ -29,6 +30,6 @@ public class ClasspathResourceTest {
     public void test2() throws IOException {
         ClasspathResource resource = new ClasspathResource("templates/index/index.html");
         ClasspathReader reader = new ClasspathReader(resource);
-        System.out.println(reader.readCharacter());
+        System.out.println(reader.readCharacter(StandardCharsets.UTF_8));
     }
 }

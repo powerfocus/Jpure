@@ -1,7 +1,11 @@
 package org.py.jpure.core.io;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.CharBuffer;
+import java.nio.charset.Charset;
 
 public class ClasspathReader extends ResourceReader {
     public ClasspathReader(Resource resource) {
@@ -9,9 +13,9 @@ public class ClasspathReader extends ResourceReader {
     }
 
     @Override
-    public String readCharacter() throws IOException {
+    public String readCharacter(Charset charset) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
-        try(InputStream inputStream = resource.getInputStream(); InputStreamReader reader = new InputStreamReader(inputStream)) {
+        try(InputStream inputStream = resource.getInputStream(); InputStreamReader reader = new InputStreamReader(inputStream, charset)) {
             CharBuffer buffer = CharBuffer.allocate(128);
             while(reader.read(buffer) != -1) {
                 buffer.flip();

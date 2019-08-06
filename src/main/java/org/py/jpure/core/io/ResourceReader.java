@@ -1,6 +1,7 @@
 package org.py.jpure.core.io;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Objects;
 
 public abstract class ResourceReader implements Reader {
@@ -11,7 +12,7 @@ public abstract class ResourceReader implements Reader {
     }
 
     @Override
-    public String readCharacter() throws IOException {
+    public String readCharacter(Charset charset) throws IOException {
         return null;
     }
 
