@@ -1,4 +1,4 @@
-package org.py.jpure.freemarker;
+package org.py.jpure.view.freemarker;
 
 public class FreemarkerResolver {
 
