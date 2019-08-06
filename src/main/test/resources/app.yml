@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: py
+      password: 123
+  types:
+    - List
+    - Collection
+    - System
+  wheels:
+    - {id: 1}
+    - {name: win10}
+    - {version: 2019}
