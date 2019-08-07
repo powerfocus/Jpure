@@ -35,16 +35,16 @@ public abstract class ResourceReader implements Reader {
 
     @Override
     public byte[] readBytes() throws IOException {
-        byte[] re = null;
+        byte[] bytes = null;
         try(InputStream inputStream = resource.getInputStream();
             ByteArrayOutputStream bout = new ByteArrayOutputStream()) {
             byte[] buffer = new byte[128];
-            int rlen = 0;
-            while((rlen = inputStream.read(buffer)) != -1) {
-                bout.write(buffer, 0, rlen);
+            int readSize = 0;
+            while((readSize = inputStream.read(buffer)) != -1) {
+                bout.write(buffer, 0, readSize);
             }
-            re = bout.toByteArray();
+            bytes = bout.toByteArray();
         }
-        return re;
+        return bytes;
     }
 }
