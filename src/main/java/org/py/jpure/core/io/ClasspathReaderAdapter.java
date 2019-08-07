@@ -8,6 +8,9 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 
 public final class ClasspathReaderAdapter {
+    public static Resource resource(String uri) {
+        return new ClasspathResource(uri);
+    }
     public static StringBuffer readAllText(Resource resource, Charset charset) throws IOException {
         StringBuffer strBuffer = new StringBuffer();
         try(InputStream inputStream = resource.getInputStream(); InputStreamReader inputStreamReader = new InputStreamReader(inputStream, charset)) {
@@ -18,6 +21,9 @@ public final class ClasspathReaderAdapter {
             }
         }
         return strBuffer;
+    }
+    public static StringBuffer readAllText(String uri, Charset charset) throws IOException {
+        return readAllText(resource(uri), charset);
     }
     public static byte[] readAllByte(Resource resource) throws IOException {
         byte[] bytes = null;
@@ -30,5 +36,8 @@ public final class ClasspathReaderAdapter {
             bytes = byteOut.toByteArray();
         }
         return bytes;
+    }
+    public static byte[] readAllByte(String uri) throws IOException {
+        return readAllByte(resource(uri));
     }
 }
