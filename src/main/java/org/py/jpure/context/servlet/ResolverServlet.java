@@ -1,5 +1,7 @@
 package org.py.jpure.context.servlet;
 
+import org.py.jpure.web.JPureApi;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
