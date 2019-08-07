@@ -12,7 +12,8 @@ public class IndexControllerTest {
         Object obj = ReflectUtils.loadAndCreate("org.py.arena.controller.IndexController");
         Method method = ReflectUtils.method(obj, "index", ModelMap.class);
         ModelMap map = new ModelMap();
-        ReflectUtils.invoke(obj, method, map);
+        Object result = ReflectUtils.invoke(obj, method, map);
+        System.out.println(result);
         System.out.println(map);
     }
 }

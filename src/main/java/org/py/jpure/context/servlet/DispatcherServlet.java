@@ -22,6 +22,6 @@ public class DispatcherServlet extends ResolverServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        log.info(req.getRequestURI());
     }
 }
