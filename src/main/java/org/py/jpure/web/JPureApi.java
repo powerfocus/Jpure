@@ -11,8 +11,8 @@ public interface JPureApi {
     void initialize();
     void destroy();
     void configuration();
-    JPureMap<String, Controller> controller();
+    JPureMap<String, Class<? extends Controller>> controller();
     JPureList<Filter> filters();
     JPureList<Servlet> servlets();
-    JPureMap<String, Interceptor> interceptor();
+    JPureMap<String, Class<? extends Interceptor>> interceptor();
 }

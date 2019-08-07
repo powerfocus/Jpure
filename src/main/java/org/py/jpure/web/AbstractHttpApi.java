@@ -8,8 +8,8 @@ import javax.servlet.Servlet;
 import java.util.logging.Filter;
 
 public abstract class AbstractHttpApi implements JPureApi {
-    protected JPureMap<String, Controller> controllerMap;
-    protected JPureMap<String, Interceptor> interceptorMap;
+    protected JPureMap<String, Class<? extends Controller>> controllerMap;
+    protected JPureMap<String, Class<? extends Interceptor>> interceptorMap;
     protected JPureList<Servlet> servlets;
     protected JPureList<Filter> filters;
     protected JPureMap<String, Object> configuration;
@@ -36,7 +36,7 @@ public abstract class AbstractHttpApi implements JPureApi {
     }
 
     @Override
-    public JPureMap<String, Controller> controller() {
+    public JPureMap<String, Class<? extends Controller>> controller() {
         return controllerMap;
     }
 
@@ -51,7 +51,7 @@ public abstract class AbstractHttpApi implements JPureApi {
     }
 
     @Override
-    public JPureMap<String, Interceptor> interceptor() {
+    public JPureMap<String, Class<? extends Interceptor>> interceptor() {
         return interceptorMap;
     }
 }
