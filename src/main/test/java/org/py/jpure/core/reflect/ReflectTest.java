@@ -1,12 +1,18 @@
 package org.py.jpure.core.reflect;
 
+import freemarker.template.Configuration;
 import org.junit.Test;
 import org.py.jpure.support.ModelMap;
+import org.py.jpure.view.freemarker.FreemarkerTemplate;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class ReflectTest {
+    private Configuration cfg;
+    public void before() {
+
+    }
     @Test
     public void test() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         Class<?> aClass = Class.forName("org.py.arena.controller.IndexController");

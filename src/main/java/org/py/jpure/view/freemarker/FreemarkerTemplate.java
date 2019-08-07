@@ -23,10 +23,12 @@ public final class FreemarkerTemplate implements BaseTemplate {
         Objects.requireNonNull(templateName, "template name not null.");
         return cfg.getTemplate(templateName.concat(extname));
     }
+    @Override
     public void process(final String templateName, final Writer out, Object model) throws IOException, TemplateException {
         Template template = process(templateName);
         template.process(model, out);
     }
+    @Override
     public void process(final String templateName, final Writer out, Consumer<Map<String, Object>> consumer) throws IOException, TemplateException {
         Template template = process(templateName);
         Map<String, Object> data = new HashMap<>();

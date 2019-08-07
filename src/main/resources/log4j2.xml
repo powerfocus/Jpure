@@ -9,6 +9,12 @@
         <Logger name="org.py.web" level="trace">
             <AppenderRef ref="Console"/>
         </Logger>
+        <Logger name="org.py.jpure" level="DEBUG">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.py.jpure.view" level="ERROR">
+            <AppenderRef ref="Console"/>
+        </Logger>
         <Root level="error">
             <AppenderRef ref="Console"/>
         </Root>

@@ -16,11 +16,12 @@ public class FreemarkerTemplateTest {
     private Configuration cfg;
     @Before
     public void before() throws IOException {
-        cfg = new Configuration(Configuration.VERSION_2_3_28);
+        /*cfg = new Configuration(Configuration.VERSION_2_3_28);
         cfg.setClassLoaderForTemplateLoading(ClassLoader.getSystemClassLoader(), "templates");
         //cfg.setDirectoryForTemplateLoading(new File("src/main/webapp/WEB-INF/freemarker"));
         cfg.setDefaultEncoding("utf-8");
-        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.DEBUG_HANDLER);
+        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.DEBUG_HANDLER);*/
+        cfg = DefaultConfigurationProvide.configuration().configuration();
     }
     @Test
     public void test0() throws IOException, TemplateException {
@@ -29,7 +30,7 @@ public class FreemarkerTemplateTest {
     }
     @Test
     public void test() throws IOException, TemplateException {
-        FreemarkerTemplate freemarkerTemplate = new FreemarkerTemplate(cfg, ".html");
+        FreemarkerTemplate freemarkerTemplate = DefaultTemplateProvide.template();
         Map<String, Object> root = new HashMap<>();
         root.put("user", "BigJoe");
         Map<String, Object> latest = new HashMap<>();
