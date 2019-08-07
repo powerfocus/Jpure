@@ -17,4 +17,3 @@ public class DispatcherServlet extends ResolverServlet {
         response.getOutputStream().write(ClasspathReaderAdapter.readAllByte("/public/wb.jpg"));
     }
 }
-
