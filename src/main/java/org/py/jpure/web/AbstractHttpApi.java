@@ -24,21 +24,21 @@ public abstract class AbstractHttpApi implements JPureApi {
 
     @Override
     public JPureMap<String, Object> controller() {
-        return null;
+        return new JPureMap<>();
     }
 
     @Override
     public JPureList<Filter> filters() {
-        return null;
+        return new JPureList<>();
     }
 
     @Override
     public JPureList<Servlet> servlets() {
-        return null;
+        return new JPureList<>();
     }
 
     @Override
     public JPureMap<String, Object> interceptor() {
-        return null;
+        return new JPureMap<>();
     }
 }

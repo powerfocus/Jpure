@@ -23,8 +23,8 @@ public class DispatcherServlet extends ResolverServlet {
     private static final Logger log = LoggerFactory.getLogger(DispatcherServlet.class);
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getOutputStream().write(new ClasspathReader(new ClasspathResource("/public/wb.jpg")).readBytes());
+    protected void jungle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.getOutputStream().write(new ClasspathReader(new ClasspathResource("/public/wb.jpg")).readBytes());
     }
 }
 
