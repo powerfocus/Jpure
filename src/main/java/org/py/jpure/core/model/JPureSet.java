@@ -1,4 +1,4 @@
-package org.py.jpure.core;
+package org.py.jpure.core.model;
 
 import java.util.HashSet;
 
