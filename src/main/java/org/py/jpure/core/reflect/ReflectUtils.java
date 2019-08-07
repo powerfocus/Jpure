@@ -17,4 +17,12 @@ public final class ReflectUtils {
     public static Method getMethod(Class<?> clazz, String methodName, Class<?>... args) throws NoSuchMethodException {
         return clazz.getMethod(methodName, args);
     }
+    public static Object loadAndCreate(String className) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        Class<?> aClass = forName(className);
+        return newInstance(aClass);
+    }
+    public static Method method(Object obj, String methodName, Class<?>... args) throws NoSuchMethodException {
+        Class<?> aClass = obj.getClass();
+        return aClass.getMethod(methodName, args);
+    }
 }

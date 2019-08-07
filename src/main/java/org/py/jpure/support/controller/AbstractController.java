@@ -2,13 +2,10 @@ package org.py.jpure.support.controller;
 
 import org.py.jpure.support.ModelMap;
 
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
 public class AbstractController implements Controller {
-    protected ConcurrentMap<String, Object> model;
+    protected ModelMap model;
     public AbstractController () {
-        model = new ConcurrentHashMap<>();
+        model = new ModelMap();
     }
 
     @Override
