@@ -1,4 +1,4 @@
-package org.py.jpure;
+package org.py.jpure.support;
 
 import org.py.jpure.support.AbstractModel;
 

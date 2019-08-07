@@ -1,23 +1,50 @@
 package org.py.jpure.core.io;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.CharBuffer;
 import java.nio.charset.Charset;
-import java.util.Objects;
 
 public abstract class ResourceReader implements Reader {
     protected Resource resource;
-    public ResourceReader(Resource resource) {
-        Objects.requireNonNull(resource, "required resource.");
-        this.resource = resource;
-    }
 
     @Override
     public String readCharacter(Charset charset) throws IOException {
-        return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        try(InputStream inputStream = resource.getInputStream(); InputStreamReader reader = new InputStreamReader(inputStream, charset)) {
+            CharBuffer buffer = CharBuffer.allocate(128);
+            while(reader.read(buffer) != -1) {
+                buffer.flip();
+                stringBuilder.append(buffer.toString());
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public StringBuffer readCharacter(Resource resource, Charset charset) throws IOException {
+        StringBuffer stringBuilder = new StringBuffer();
+        try(InputStream inputStream = resource.getInputStream(); InputStreamReader reader = new InputStreamReader(inputStream, charset)) {
+            CharBuffer buffer = CharBuffer.allocate(128);
+            while(reader.read(buffer) != -1) {
+                buffer.flip();
+                stringBuilder.append(buffer.toString());
+            }
+        }
+        return stringBuilder;
     }
 
     @Override
     public byte[] readBytes() throws IOException {
-        return new byte[0];
+        byte[] re = null;
+        try(InputStream inputStream = resource.getInputStream();
+            ByteArrayOutputStream bout = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[128];
+            int rlen = 0;
+            while((rlen = inputStream.read(buffer)) != -1) {
+                bout.write(buffer, 0, rlen);
+            }
+            re = bout.toByteArray();
+        }
+        return re;
     }
 }

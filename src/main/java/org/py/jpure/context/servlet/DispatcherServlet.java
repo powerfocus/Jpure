@@ -1,5 +1,7 @@
 package org.py.jpure.context.servlet;
 
+import org.py.jpure.core.io.ClasspathReader;
+import org.py.jpure.core.io.ClasspathResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +24,7 @@ public class DispatcherServlet extends ResolverServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info(req.getRequestURI());
+        resp.getOutputStream().write(new ClasspathReader(new ClasspathResource("/public/wb.jpg")).readBytes());
     }
 }
+
