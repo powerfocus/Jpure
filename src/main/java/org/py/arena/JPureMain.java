@@ -7,8 +7,13 @@ import org.py.jpure.web.AbstractHttpApi;
 
 public class JPureMain extends AbstractHttpApi {
     @Override
-    public JPureMap<String, Class<? extends Controller>> controller() {
+    public JPureMap<String, Class<? extends Controller>> controllerMap() {
         controllerMap.put("/index", IndexController.class);
-        return super.controller();
+        return super.controllerMap();
+    }
+
+    @Override
+    public void body() {
+        System.out.println("body in JPureMain.");
     }
 }

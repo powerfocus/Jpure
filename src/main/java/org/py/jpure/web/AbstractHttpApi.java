@@ -36,7 +36,12 @@ public abstract class AbstractHttpApi implements JPureApi {
     }
 
     @Override
-    public JPureMap<String, Class<? extends Controller>> controller() {
+    public void body() {
+
+    }
+
+    @Override
+    public JPureMap<String, Class<? extends Controller>> controllerMap() {
         return controllerMap;
     }
 
@@ -51,7 +56,7 @@ public abstract class AbstractHttpApi implements JPureApi {
     }
 
     @Override
-    public JPureMap<String, Class<? extends Interceptor>> interceptor() {
+    public JPureMap<String, Class<? extends Interceptor>> interceptorMap() {
         return interceptorMap;
     }
 }
