@@ -1,5 +1,6 @@
 package org.py.jpure.web;
 
+import org.py.jpure.JPureInitialize;
 import org.py.jpure.context.WebRootResolver;
 import org.py.jpure.context.filter.CharacterEncodingFilter;
 import org.py.jpure.context.listener.RootServletListener;
@@ -15,8 +16,10 @@ import java.util.Set;
 @HandlesTypes(WebApplicationInitializer.class)
 public class JPureServletInitializer implements ServletContainerInitializer {
     private static final WebRootResolver webRootResolver;
+    private static final JPureApi jPureApi;
     static {
         webRootResolver = new WebRootResolver();
+        jPureApi = JPureInitialize.get();
     }
     @Override
     public void onStartup(Set<Class<?>> set, ServletContext servletContext) throws ServletException {
@@ -27,5 +30,7 @@ public class JPureServletInitializer implements ServletContainerInitializer {
         ServletRegistration.Dynamic dispatcherServlet = servletContext.addServlet("dispatcherServlet", DispatcherServlet.class);
         dispatcherServlet.setLoadOnStartup(1);
         dispatcherServlet.addMapping("/");
+
+        jPureApi.startup(webRootResolver);
     }
 }

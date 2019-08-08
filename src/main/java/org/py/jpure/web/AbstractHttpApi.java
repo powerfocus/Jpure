@@ -1,5 +1,6 @@
 package org.py.jpure.web;
 
+import org.py.jpure.context.WebRootResolver;
 import org.py.jpure.core.model.JPureList;
 import org.py.jpure.core.model.JPureMap;
 import org.py.jpure.support.controller.Controller;
@@ -37,6 +38,11 @@ public abstract class AbstractHttpApi implements JPureApi {
 
     @Override
     public void body() {
+
+    }
+
+    @Override
+    public void startup(WebRootResolver webRootResolver) {
 
     }
 
