@@ -6,6 +6,17 @@ import org.py.jpure.core.model.JPureMap;
 import org.py.jpure.support.controller.Controller;
 import org.py.jpure.web.AbstractHttpApi;
 
+/**
+ * @author pythagoras
+ * @version 0.1
+ * 2019
+ * 系统入口程序
+ *      设置系统配置文件，配置系统参数
+ *      注册自定义3大组件
+ *      在DispatcherServlet中插入自定义代码
+ *      设置拦截器
+ * 本类会在系统启动前初始化
+ * */
 public class JPureMain extends AbstractHttpApi {
     /**
      * @param webRootResolver 用于注册HttpServlet 3大组件
